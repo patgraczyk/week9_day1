@@ -34,5 +34,25 @@ public class CohortController {
         }, velocityTemplateEngine);
 
 
+        get("/group", (req, res) -> {
+            List<Student> students = cohort.groupOfFiveStudents();
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("groupOfFive", students);
+            model.put("template", "randomGroup.vtl");
+            return new ModelAndView(model, "layout.vtl");
+        }, velocityTemplateEngine);
+
+
+        get("/group/:size", (req, res) -> {
+            Integer groupSize = Integer.parseInt(req.params(":size"));
+            List<Student> students = cohort.groupOfRandomFive(groupSize);
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("groupOfFive", students);
+            model.put("template", "randomGroupFive.vtl");
+            return new ModelAndView(model, "layout.vtl");
+        }, velocityTemplateEngine);
+
+
+
     }
 }

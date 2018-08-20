@@ -78,6 +78,34 @@ public class Cohort {
         return twoStudents;
     }
 
+//    THIS WONT WORK FOR THE PATH NEEDED BUT WILL RETURN A GROUP OF 5
+
+    public ArrayList<Student> groupOfFiveStudents(){
+        Collections.shuffle(students);
+        ArrayList<Student> fiveStudents = new ArrayList<>();
+        for (Student student : this.students) {
+            if ( 5 > fiveStudents.size() ) {
+                fiveStudents.add(student);
+            }
+        }
+        return fiveStudents;
+    }
+
+
+//    GROUP OF RANDOM FIVE
+    public ArrayList<Student> groupOfRandomFive(Integer groupSize) {
+        Collections.shuffle(students);
+        ArrayList<Student> groupOfFive = new ArrayList<>();
+        for (Student student : this.students) {
+            if ( groupSize > groupOfFive.size() ) {
+                groupOfFive.add(student);
+            }
+        }
+        return groupOfFive;
+    }
+
+
+
     public void setStudents(List<Student> students) {
         this.students = students;
     }
