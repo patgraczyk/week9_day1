@@ -19,7 +19,7 @@ public class CohortController {
         get("/random", (req, res) -> {
             Student result = cohort.mixedStudents();
             HashMap<String, Object> model = new HashMap<>();
-            model.put("student", result);
+            model.put("randomStudent", result);
             model.put("template", "random.vtl");
             return new ModelAndView(model, "layout.vtl");
         },velocityTemplateEngine);

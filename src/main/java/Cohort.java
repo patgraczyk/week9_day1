@@ -10,6 +10,7 @@ public class Cohort {
     public Cohort(String cohortName) {
         this.cohortName = cohortName;
         this.students = new ArrayList<Student>();
+        this.populateStudents();
     }
 
     Student student1 = new Student("Anna");
@@ -34,7 +35,7 @@ public class Cohort {
     Student student20= new Student("Mike");
 
 
-    public void saveAllStudents(){
+    public void populateStudents(){
         students.add(student1);
         students.add(student2);
         students.add(student3);
@@ -57,22 +58,25 @@ public class Cohort {
         students.add(student20);
     }
 
-
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void shuffle(){
-        Collections.shuffle(students);
-
-    }
-
     public Student mixedStudents(){
         Collections.shuffle(students);
         return students.get(0);
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public ArrayList<Student> pairOfStudents(){
+        Collections.shuffle(students);
+        ArrayList<Student> twoStudents = new ArrayList<>();
+        for (Student student : this.students) {
+            if ( 2 > twoStudents.size() ) {
+                twoStudents.add(student);
+            }
+        }
+        return twoStudents;
+    }
 
     public void setStudents(List<Student> students) {
         this.students = students;
@@ -92,15 +96,5 @@ public class Cohort {
 
 
 
-    public ArrayList<Student> pairOfStudents(){
-        Collections.shuffle(students);
-        ArrayList<Student> twoStudents = new ArrayList<>();
-        for (Student student : this.students) {
-            if ( 2 > twoStudents.size() ) {
-                twoStudents.add(student);
-            }
-        }
-        return twoStudents;
-    }
 
 }
